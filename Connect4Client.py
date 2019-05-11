@@ -14,7 +14,14 @@ class GameClient:
 	def __init__(self):
 		self.board = GameBoard()
 		self.human = Human('O')
-		difficulty = int(input("Enter a difficulty from 1 to 6.\nYou can go higher, but performance will take longer.\n> "))
+		while True:		# Integer Input Validation Loop
+			try:
+				difficulty = int(input("Enter a difficulty from 1 to 6.\nYou can go higher, but performance will take longer.\n> "))
+			except ValueError:
+				print("Invalid input!")
+				continue
+			else:
+				break
 		showScores = input("Show scores? (y/n)> ")
 		self.ai = AI('X', difficulty, showScores)
 
